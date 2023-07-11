@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <title>Url Shortener</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body>
+    <header class="bg-indigo-600">
+      <nav
+        class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <div class="text-white font-bold text-2xl">URL Shortener</div>
+        <ul class="flex gap-5 text-md">
+          <li>
+            <a
+              href="/"
+              class="text-white hover:text-gray-300 transition-all duration-200 active:font-bold"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="/"
+              class="text-white hover:text-gray-300 transition-all duration-200 active:font-bold"
+              >Edit</a
+            >
+          </li>
+          <li>
+            <a
+              href="/"
+              class="text-white hover:text-gray-300 transition-all duration-200 active:font-bold"
+              >List</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="max-w-7xl mx-auto p-20">
+      <h2 class="text-2xl font-semibold">Enter Url Here</h2>
+      <div class="flex">
+        <input type="text" class="border p-2 w-full" />
+      </div>
+    </main>
+  </body>
+</html>
