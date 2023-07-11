@@ -29,6 +29,8 @@ function generateShortUrl() {
       if (result.short_url) {
         short_url_container.innerHTML = `Short URL:  <a target="_blank" class="ml-5 text-indigo-400 underline" id="short-url" href="${result.short_url}">${result.short_url}</a>`;
         copyBtn.classList.remove("hidden");
+
+        saveToLocalStorage(result.short_url, long_url);
       } else error.innerHTML = `Error Occured: ${result.message}`;
       generate_btn.innerHTML = "Generate";
     })
@@ -40,4 +42,17 @@ function copyToClipboard() {
   navigator.clipboard.writeText(short_url.innerText);
 
   alert("Copied the URL: " + short_url.innerText);
+}
+
+function saveToLocalStorage(short_url, long_url) {
+  console.log(short_url, long_url);
+  let newStoredUrl = [];
+  let storedUrls = JSON.parse(localStorage.getItem("shortUrls"));
+  if (storedUrls) {
+    newStoredUrl.push(...storedUrls, { short_url, long_url });
+  } else {
+    newStoredUrl.push({ short_url, long_url });
+  }
+
+  localStorage.setItem("shortUrls", JSON.stringify(newStoredUrl));
 }
