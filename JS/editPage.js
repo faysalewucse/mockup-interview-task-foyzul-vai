@@ -17,9 +17,14 @@ function displayStoredUrl() {
           </div>
           <p class="text-red-500" id="errorFor${url.id}"></p>
           <h5 class="my-2 text-green-600">Short URL: <span class="text-black">${url.short_url}</span> <span onclick="copyToClipboard('${url.short_url}')" class="cursor-pointer ml-5 underline">copy</span></h5>
-          <button  id="updateBtnFor${url.id}" onclick="updateUrl(${url.id})" class="disable bg-indigo-500 text-white py-2 px-4 text-sm hover:bg-indigo-600">
-            Update
-          </button>
+          <div>
+            <button id="updateBtnFor${url.id}" onclick="updateUrl(${url.id})" class="disable bg-indigo-500 text-white py-2 px-4 text-sm hover:bg-indigo-600">
+              Update
+            </button>
+            <button id="deleteBtnFor${url.id}" onclick="deleteUrl(${url.id})" class="disable bg-red-500 text-white py-2 px-4 text-sm hover:bg-red-600">
+              Delete
+            </button>
+          </div>
         </div>`;
       url_list_container.appendChild(listItem);
     });
@@ -91,6 +96,20 @@ function updateFromLocalStorage(short_url, long_url, id) {
     alert("Error Occured!");
   }
   localStorage.setItem("shortUrls", JSON.stringify(updatedUrlList));
+}
+
+function deleteUrl(id) {
+  let storedUrls = JSON.parse(localStorage.getItem("shortUrls"));
+  let updatedUrlList = [];
+
+  if (storedUrls) {
+    updatedUrlList = storedUrls.filter((url) => url.id !== id);
+  } else {
+    alert("Error Occured!");
+  }
+  localStorage.setItem("shortUrls", JSON.stringify(updatedUrlList));
+  url_list_container.innerHTML = ``;
+  displayStoredUrl();
 }
 
 displayStoredUrl();
