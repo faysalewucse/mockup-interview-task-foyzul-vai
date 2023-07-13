@@ -45,13 +45,16 @@ function copyToClipboard() {
 }
 
 function saveToLocalStorage(short_url, long_url) {
-  console.log(short_url, long_url);
   let newStoredUrl = [];
   let storedUrls = JSON.parse(localStorage.getItem("shortUrls"));
   if (storedUrls) {
-    newStoredUrl.push(...storedUrls, { short_url, long_url });
+    newStoredUrl.push(...storedUrls, {
+      id: storedUrls.length + 1,
+      short_url,
+      long_url,
+    });
   } else {
-    newStoredUrl.push({ short_url, long_url });
+    newStoredUrl.push({ id: 1, short_url, long_url });
   }
 
   localStorage.setItem("shortUrls", JSON.stringify(newStoredUrl));

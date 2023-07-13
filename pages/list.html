@@ -12,7 +12,9 @@
       <nav
         class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
       >
-        <div class="text-white font-bold text-2xl">URL Shortener</div>
+        <a href="/" class="cursor-pointer text-white font-bold text-2xl"
+          >URL Shortener</a
+        >
         <ul class="flex gap-5 text-md">
           <li>
             <a
@@ -38,5 +40,19 @@
         </ul>
       </nav>
     </header>
+
+    <!-- Main Body -->
+    <main class="max-w-7xl min-h-screen mx-auto md:p-20 px-2 py-5">
+      <a
+        href="/"
+        class="text-indigo-500 border border-indigo-500 py-1 px-6 rounded text-sm hover:bg-indigo-500 hover:text-white"
+        >&larr; Go to Home</a
+      >
+      <h4 class="text-3xl font-bold mt-5">Your URL's History</h4>
+      <div id="url-list-container"></div>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="../JS/list.js"></script>
   </body>
 </html>
